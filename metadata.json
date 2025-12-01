@@ -1,0 +1,5 @@
+{
+  "name": "Tamjid CNC Perp Studio",
+  "description": "An AI-powered tool to automatically correct perspective, remove obstructions, and enhance images of carved furniture for CNC machining.",
+  "requestFramePermissions": []
+}
