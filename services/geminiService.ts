@@ -5,7 +5,10 @@ export const editImageWithGemini = async (
   opts?: { width?: number; height?: number }
 ): Promise<string> => {
   try {
-    const base = (typeof import.meta !== 'undefined' && (import.meta as any).env && (import.meta as any).env.VITE_API_BASE) || '';
+    const viteBase = (typeof import.meta !== 'undefined' && (import.meta as any).env && (import.meta as any).env.VITE_API_BASE) || '';
+    const win: any = (typeof window !== 'undefined') ? window : {};
+    const fallbackBase = win.API_BASE || win.RENDER_API_BASE || '';
+    const base = (viteBase || fallbackBase || '').toString();
     const url = base ? `${base.replace(/\/?$/, '')}/api/edit-image` : '/api/edit-image';
     const res = await fetch(url, {
       method: 'POST',
